@@ -9,6 +9,6 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=${TARGETARCH} go build -o /wrp-${TARGETARCH}
 FROM chromedp/headless-shell
 ARG TARGETARCH
 COPY --from=builder /wrp-${TARGETARCH} /wrp
-ENTRYPOINT ["/wrp"]
+ENTRYPOINT ["/wrp", "-m", "html"]
 ENV PATH="/headless-shell:${PATH}"
-LABEL maintainer="as@tenoware.com"
+LABEL maintainer="thomas.hass@gmx.de"
